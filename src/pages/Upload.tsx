@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Upload as UploadIcon, X, CheckCircle, AlertCircle } from 'lucide-react';
 import axios from 'axios';
-import { supabase } from '../lib/supabase';
 import { useAuth } from '../components/AuthProvider';
 
 interface UploadStatus {

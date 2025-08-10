@@ -75,7 +75,7 @@ const Home: React.FC = () => {
       {/* Footer Section */}
       <footer className="w-full bg-indigo-700 text-white py-4 text-center">
         <p className="text-sm">
-          Copyright © 2025 All rights reserved | This Website is made with by Ashirwad Kumar Jha
+          Copyright                 2025 All rights reserved | This Website is made with by Ashirwad Kumar Jha
         </p>
       </footer>
     </div>
