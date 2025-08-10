@@ -40,6 +40,7 @@ const upload = multer({
 });
 
 // Initialize Supabase client
+
 const supabaseUrl = process.env.SUPABASE_URL || 'https://phqvvgcykcyqzfxjiloh.supabase.co';
 const supabaseKey = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBocXZ2Z2N5a2N5cXpmeGppbG9oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA2Nzk2MjIsImV4cCI6MjA1NjI1NTYyMn0.k0z9E_BCFNoIxX1SDaTE-YPI_E3y99wXeG2kA7H64do';
 const supabase = createClient(supabaseUrl, supabaseKey);
@@ -54,20 +55,24 @@ app.use(express.static(path.join(__dirname, '../dist')));
 
 // API endpoints
 app.post('/api/videos/upload', upload.single('video'), async (req, res) => {
+
   try {
     if (!req.file) {
-      return res.status(400).json({ error: 'No video file uploaded' });
-    }
+  return res.status(400).json({ error: 'No video file uploaded' });
+}
 
-    const { title, description, userId } = req.body;
+   const { title, description, userId } = req.body;
+
     
     if (!title) {
-      return res.status(400).json({ error: 'Video title is required' });
-    }
+  return res.status(400).json({ error: 'Video title is required' });
+}
 
     const filename = req.file.filename;
-    const videoUrl = `/api/videos/stream/${filename}`;
-    const thumbnailUrl = 'https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80';
+const videoUrl = `/api/videos/stream/${filename}`;
+
+const thumbnailUrl = 'https://images.unsplash.com/photo-...';
+
     
     // Insert into Supabase
     const { data, error } = await supabase
